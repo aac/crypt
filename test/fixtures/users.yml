@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  private_key: MyText
+  public_key: MyText
+
+two:
+  username: MyString
+  private_key: MyText
+  public_key: MyText
