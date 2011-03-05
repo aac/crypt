@@ -15,8 +15,8 @@ module Crypto
       @key = OpenSSL::PKey::RSA.new(*[data,password].compact)
     end
   
-    def self.from_file(filename)    
-      self.new File.read( filename )
+    def self.from_file(filename, password=nil)    
+      self.new(File.read( filename ),password)
     end
   
     def encrypt(text)
@@ -37,6 +37,10 @@ module Crypto
     
     def key_type
       @public ? :public : :private
+    end
+
+    def public_key
+      @key.public_key.to_s
     end
   end
 end
