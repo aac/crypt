@@ -10,19 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304211007) do
-
-  create_table "data", :force => true do |t|
-    t.integer  "owner_id"
-    t.text     "encrypted_data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110304233404) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
     t.text     "private_key"
     t.text     "public_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "values", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "encrypted_data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

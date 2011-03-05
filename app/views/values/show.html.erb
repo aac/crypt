@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @value.user.username %>
+</p>
+
+<p>
+  <b>Encrypted data:</b>
+  <%= @value.encrypted_data %>
+</p>
+
+
+<%= link_to 'Edit', edit_value_path(@value) %> |
+<%= link_to 'Back', values_path %>
