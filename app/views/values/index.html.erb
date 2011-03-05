@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Value', new_value_path %>
+<%= link_to 'New Value', @user ? new_user_value_path(@user) : new_value_path %>

@@ -1,7 +1,9 @@
 Crypt::Application.routes.draw do
   resources :values
-  resources :users
-
+  resources :users do
+    resources :values
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

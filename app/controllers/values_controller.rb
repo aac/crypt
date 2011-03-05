@@ -2,6 +2,7 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.xml
   def index
+    @user = User.find(params[:user_id]) || User.new
     @values = Value.all
 
     respond_to do |format|
@@ -24,7 +25,8 @@ class ValuesController < ApplicationController
   # GET /values/new
   # GET /values/new.xml
   def new
-    @value = Value.new
+    @user = User.find(params[:user_id]) || User.new
+    @value = @user.values.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,7 @@ class ValuesController < ApplicationController
   # POST /values.xml
   def create
     @user = User.find_by_username("andrew")
+    @user.password = params[:password]
     @value = @user.values.create(params[:value])
 
     respond_to do |format|
