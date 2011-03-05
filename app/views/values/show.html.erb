@@ -6,10 +6,21 @@
 </p>
 
 <p>
+  <% if @value.data %>
+  <b>Data:</b>
+  <%= @value.data %>
+  <% else %>
   <b>Encrypted data:</b>
   <%= @value.encrypted_data %>
+  <% end %>
 </p>
 
+<!-- this should be a post.  don't want the password as a URL parameter. -->
+<% form_tag(user_value_path(@user, @value), :method => :get) do %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Decrypt" %>
+<% end %>
 
 <%= link_to 'Edit', edit_value_path(@value) %> |
 <%= link_to 'Back', values_path %>
