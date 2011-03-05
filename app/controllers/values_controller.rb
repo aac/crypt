@@ -2,7 +2,7 @@ class ValuesController < ApplicationController
   # GET /values
   # GET /values.xml
   def index
-    @user = User.find(params[:user_id]) || User.new
+    @user = User.find_by_id(params[:user_id]) || User.new
     @values = Value.all
 
     respond_to do |format|
@@ -14,7 +14,10 @@ class ValuesController < ApplicationController
   # GET /values/1
   # GET /values/1.xml
   def show
+    @user = User.find_by_id(params[:user_id]) || User.new
+    @user.password = params[:password]
     @value = Value.find(params[:id])
+    @value.decrypt!(@user)
 
     respond_to do |format|
       format.html # show.html.erb
