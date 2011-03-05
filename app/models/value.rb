@@ -5,6 +5,10 @@ class Value < ActiveRecord::Base
   before_validation {self.encrypt!}
 
   def encrypt!
-    self.user.encrypt(self.data)
+    self.encrypted_data = self.user.encrypt(self.data)
+  end
+
+  def decrypt!(u)
+    self.data = u.decrypt(self.encrypted_data) if user == u && u.password
   end
 end
